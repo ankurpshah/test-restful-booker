@@ -9,11 +9,13 @@ jobs: # a collection of steps
 
       - run:
           name: Run smoke test
-          command: cd scripts && ./smoke_local.sh
+          working_directory: /root/scripts
+          command: source smoke_local.sh
       
       - run:
           name: Run regression test
-          command: cd scripts && ./regression_local.sh
+          working_directory: /root/scripts
+          command: source regression_local.sh
       
       - store_test_results:
           path: ~/report
