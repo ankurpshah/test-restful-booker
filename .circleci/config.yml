@@ -2,20 +2,18 @@ version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     docker: # run the steps with Docker
-      - image: circleci/node:lts-jessie
-      - image: postman/newman
+      - image: ankurpshah/newman-with-htmlextra
     
     steps: # a collection of executable commands
       - checkout
-      - setup_remote_docker
 
       - run:
           name: Run smoke test
-          command: cd scripts && ./docker_smoke_local.sh
+          command: cd scripts && ./smoke_local.sh
       
       - run:
           name: Run regression test
-          command: cd scripts && ./docker_regression_local.sh
+          command: cd scripts && ./regression_local.sh
       
       - store_test_results:
           path: ~/report
