@@ -2,10 +2,12 @@ version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     docker: # run the steps with Docker
+      - image: circleci/node:lts-jessie
       - image: postman/newman
     
     steps: # a collection of executable commands
       - checkout
+      - setup_remote_docker
 
       - run:
           name: Run smoke test
