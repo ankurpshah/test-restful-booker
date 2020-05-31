@@ -11,10 +11,6 @@ def withDockerNetwork(Closure inner) {
 pipeline {
   agent none
 
-  options {
-      ansiColor("xterm")
-  }
-
   stages {
     stage("Test restful-booker") {
       agent any
