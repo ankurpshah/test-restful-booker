@@ -26,9 +26,8 @@ pipeline {
                 -v  ${PWD}/report:/etc/report
                 --rm 
               """) {
-                sh "echo ${PWD}"
-                sh "ls -al"
                 sh "newman run /etc/postman/smoke.postman_collection.json -e /etc/env/docker.postman_environment.json -r junit --reporter-junit-export=/etc/report/Smoke-report.xml"
+                sh "exit 0"
               }
             }
             docker.container('api-server').stop()
