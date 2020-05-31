@@ -1,0 +1,42 @@
+def withDockerNetwork(Closure inner) {
+  try {
+    networkId = UUID.randomUUID().toString()
+    sh "docker network create ${networkId}"
+    inner.call(networkId)
+  } finally {
+    sh "docker network rm ${networkId}"
+  }
+}
+
+pipeline {
+  agent none
+
+  options {
+      ansiColor("xterm")
+  }
+
+  stages {
+    stage("Test restful-booker") {
+      agent any
+
+      steps {
+        script {
+          withDockerNetwork{ n ->
+            docker.image('ankurpshah/restful-booker').withRun("--network ${n} --name restful-booker -p 3001:3001") { c ->
+              docker.image('postman/newman').inside("""
+                --network ${n}
+                -v ${PWD}/../collection:/etc/postman
+                -v ${PWD}/../env:/etc/env
+                -v  ${PWD}/../report:/etc/report
+              """) {
+                dir("back-end-jwt") {
+                  sh "run /etc/postman/smoke.postman_collection.json --environment=/etc/env/docker.postman_environment.json --reporters junit --reporter-junit-export=/etc/report/Smoke-report.xml"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
