@@ -4,7 +4,6 @@ pipeline {
 
   stages {
     stage('docker-compose') {
-      dir('scripts')
       steps {
         sh "docker-compose up -d"
       }
