@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  restful-booker:
+    image: ankurpshah/restful-booker
+    # build: ./
+    ports:
+      - "3001:3001"
+  test-restful-booker:
+    image: postman/newman
+    tty: true
+    volumes:
+      - ${PWD}/../collection:/etc/postman
+      - ${PWD}/../env:/etc/env
+      - ${PWD}/../report:/etc/report
+    command:
+      - run
+      - /etc/postman/smoke.postman_collection.json
+      - --environment=/etc/env/docker.postman_environment.json
+      - --reporters
+      - junit
+      - --reporter-junit-export=/etc/report/Smoke-report.xml
+  test-restful-booker-extra:
+    image: ankurpshah/newman-with-htmlextra
+    tty: true
+    volumes:
+      - ${PWD}/../collection:/etc/postman
+      - ${PWD}/../env:/etc/env
+      - ${PWD}/../report:/etc/report
+    command:
+      - run
+      - /etc/postman/smoke.postman_collection.json
+      - --environment=/etc/env/docker.postman_environment.json
+      - --reporters
+      - htmlextra
+      - --reporter-htmlextra-export 
+      - /etc/report/smoke.html
+      - --reporter-htmlextra-title 
+      - "Smoke Test"
