@@ -10,12 +10,12 @@ services:
     image: postman/newman
     tty: true
     volumes:
-      - type: volume
-        source: collection
+      - type: bind
+        source: ./collection
         target: /etc/postman
         read_only: true
-      - type: volume
-        source: env
+      - type: bind
+        source: ./env
         target: /etc/env
         read_only: true
       - type: volume
@@ -32,12 +32,12 @@ services:
     image: ankurpshah/newman-with-htmlextra
     tty: true
     volumes:
-      - type: volume
-        source: collection
+      - type: bind
+        source: ./collection
         target: /etc/postman
         read_only: true
-      - type: volume
-        source: env
+      - type: bind
+        source: ./env
         target: /etc/env
         read_only: true
       - type: volume
@@ -54,8 +54,4 @@ services:
       - --reporter-htmlextra-title 
       - "Smoke Test"
 volumes:
-  collection:
-    read_only: true
-  env:
-    read_only: true
   report:
