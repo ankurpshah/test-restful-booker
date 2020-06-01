@@ -13,7 +13,7 @@ pipeline {
     }
   }
   post {
-    always {
+    success {
       junit 'report/junit/*.xml'
       publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'report/html', reportFiles: 'smoke.html', reportName: 'API Test Report', reportTitles: ''])
     }
