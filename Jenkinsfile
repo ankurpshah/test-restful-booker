@@ -6,7 +6,7 @@ pipeline {
       agent {
         docker {
           image 'ankurpshah/restful-booker'
-          args '-p 3001:3001 --name=restful-booker'
+          args '-p 3001:3001 -t --name=restful-booker --rm '
         }
       }
       steps {
@@ -17,7 +17,7 @@ pipeline {
       agent {
         docker {
           image 'postman/newman'
-          args '-v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report'
+          args '-t --rm -v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report '
         }
       }
 
