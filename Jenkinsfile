@@ -12,6 +12,8 @@ pipeline {
           docker-compose up -d
           sleep 20
           docker-compose down
+          pwd
+          ls -al
         '''
       }
     }
