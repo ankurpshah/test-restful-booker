@@ -4,9 +4,10 @@ pipeline {
   stages {
     stage('Run restful-booker app') {
       agent {
-        docker 'ankurpshah/restful-booker'
-        args '-p 3001:3001 --name=restful-booker'
-        label 'restful-booker'
+        docker {
+          image: 'ankurpshah/restful-booker'
+          args: '-p 3001:3001 --name=restful-booker'
+        }
       }
       steps {
         sh "echo 'Server Started'"
@@ -14,9 +15,10 @@ pipeline {
     }
     stage('Run newman test') {
       agent {
-        docker 'postman/newman'
-        args '-v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report'
-        label 'newman'
+        docker {
+          image: 'postman/newman'
+          args: '-v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report'
+        }
       }
 
       stages {
