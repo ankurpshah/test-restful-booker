@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh '/usr/local/bin/newman run /etc/postman/smoke.postman_collection.json -e /etc/env/docker.postman_environment.json -r htmlextra,junit --reporter-htmlextra-export /etc/report/smoke.html --reporter-htmlextra-title Smoke --reporter-junit-export /etc/report/Smoke-report.xml'
+        sh 'newman run /etc/postman/smoke.postman_collection.json -e /etc/env/docker.postman_environment.json -r htmlextra,junit --reporter-htmlextra-export /etc/report/smoke.html --reporter-htmlextra-title Smoke --reporter-junit-export /etc/report/Smoke-report.xml'
       }
     }
   }

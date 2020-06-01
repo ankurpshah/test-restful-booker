@@ -30,5 +30,4 @@ WORKDIR /etc/newman
 # docker run -v /home/collections:/etc/newman -t postman/newman_alpine -c YourCollection.json.postman_collection \
 #                                                                        -e YourEnvironment.postman_environment \
 #                                                                        -H newman_report.html
-ENTRYPOINT ["newman"]
-CMD ["--help"]
+CMD ["newman"]
