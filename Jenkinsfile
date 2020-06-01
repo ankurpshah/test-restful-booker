@@ -1,25 +1,29 @@
-// pipeline {
+pipeline {
+  agent none
 
-//   agent any
-
-//   stages {
-//     stage('docker-compose') {
-//       steps {
-//         sh "docker-compose up -d"
-//       }
-//     }
-//   }
-//   post {
-//     always {
-//       sh "docker-compose down || true"
-//     }
-//   }   
-// }
-
-node {
-  stage 'Checkout'
-  git url: 'https://github.com/ankurpshah/test-restful-booker.git'
-
-  stage 'deploy'
-  sh 'docker-compose up -d'
+  stages {
+    stage('Run restful-booker app') {
+      agent {
+        docker 'ankurpshah/restful-booker'
+        args '-p 3001:3001 --name=restful-booker'
+      }
+      steps {
+        sh "echo 'Server Started'"
+      }
+    }
+    stage('Run newman test') {
+      agent {
+        docker 'postman/newman'
+        args '-v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report'
+      }
+      steps {
+        sh "run /etc/postman/smoke.postman_collection.json --environment=/etc/env/docker.postman_environment.json --reporters junit --reporter-junit-export=/etc/report/Smoke-report.xml"
+      }
+      post {
+        success {
+          sh "docker stop restful-booker"
+        }
+      }
+    }
+  } 
 }
