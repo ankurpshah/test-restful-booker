@@ -10,9 +10,9 @@ services:
     image: postman/newman
     tty: true
     volumes:
-      - ${PWD}/collection:/etc/postman
-      - ${PWD}/env:/etc/env
-      - ${PWD}/report:/etc/report
+      - collection:/etc/postman
+      - env:/etc/env
+      - report:/etc/report
     command:
       - run
       - /etc/postman/smoke.postman_collection.json
@@ -24,9 +24,9 @@ services:
     image: ankurpshah/newman-with-htmlextra
     tty: true
     volumes:
-      - ${PWD}/collection:/etc/postman
-      - ${PWD}/env:/etc/env
-      - ${PWD}/report:/etc/report
+      - collection:/etc/postman
+      - env:/etc/env
+      - report:/etc/report
     command:
       - run
       - /etc/postman/smoke.postman_collection.json
