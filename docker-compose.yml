@@ -20,6 +20,9 @@ services:
       - --reporters
       - junit
       - --reporter-junit-export=/etc/report/Smoke-report.xml
+      - "&&"
+      - sleep
+      - "100"
   test-restful-booker-extra:
     image: ankurpshah/newman-with-htmlextra
     tty: true
