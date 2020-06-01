@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'ankurpshah/newman-with-htmlextra'
-      args "-t -v /etc/newman/collection:/etc/postman -v /etc/newman/env:/etc/env -v /etc/newman/report:/etc/report"
+      args "-t -v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report"
     }
   }
   stages {
