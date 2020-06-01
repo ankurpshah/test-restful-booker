@@ -10,6 +10,7 @@ pipeline {
       steps {
         sh "docker-compose up -d"
         sh "sleep 20"
+        sh "docker-compose down"
       }
     }
   } 
