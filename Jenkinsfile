@@ -2,9 +2,7 @@ pipeline {
   agent {
     docker {
       image 'jonpraw/jenkins-dind-slave'
-      ttyEnabled True 
-      privileged True
-      args '${computer.jnlpmac} ${computer.name}'
+      args '-t '
     }
   }
   stages {
