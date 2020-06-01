@@ -13,6 +13,7 @@ services:
       - ./collection:/etc/postman
       - ./env:/etc/env
       - report:/etc/report
+    entrypoint: /bin/bash
     command:
       # - run
       # - /etc/postman/smoke.postman_collection.json
@@ -20,10 +21,8 @@ services:
       # - --reporters
       # - junit
       # - --reporter-junit-export=/etc/report/Smoke-report.xml
-      - "--help"
-      - "&&"
       - sleep
-      - "100"
+      - "150"
   test-restful-booker-extra:
     image: ankurpshah/newman-with-htmlextra
     tty: true
@@ -31,6 +30,7 @@ services:
       - ./collection:/etc/postman
       - ./env:/etc/env
       - report:/etc/report
+    entrypoint: /bin/bash
     command:
       # - run
       # - /etc/postman/smoke.postman_collection.json
@@ -41,9 +41,7 @@ services:
       # - /etc/report/smoke.html
       # - --reporter-htmlextra-title 
       # - "Smoke Test"
-      - "--help"
-      - "&&"
       - sleep
-      - "100"
+      - "150"
 volumes:
   report:
