@@ -10,9 +10,17 @@ services:
     image: postman/newman
     tty: true
     volumes:
-      - collection:/etc/postman
-      - env:/etc/env
-      - report:/etc/report
+      - type: volume
+        source: collection
+        target: /etc/postman
+        read_only: true
+      - type: volume
+        source: env
+        target: /etc/env
+        read_only: true
+      - type: volume
+        source: report
+        target: /etc/report
     command:
       - run
       - /etc/postman/smoke.postman_collection.json
@@ -24,9 +32,17 @@ services:
     image: ankurpshah/newman-with-htmlextra
     tty: true
     volumes:
-      - collection:/etc/postman
-      - env:/etc/env
-      - report:/etc/report
+      - type: volume
+        source: collection
+        target: /etc/postman
+        read_only: true
+      - type: volume
+        source: env
+        target: /etc/env
+        read_only: true
+      - type: volume
+        source: report
+        target: /etc/report
     command:
       - run
       - /etc/postman/smoke.postman_collection.json
