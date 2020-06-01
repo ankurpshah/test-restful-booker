@@ -13,7 +13,7 @@ services:
       - ./collection:/etc/postman
       - ./env:/etc/env
       - report:/etc/report
-    entrypoint: /bin/bash
+    entrypoint: /bin/sh
     command:
       # - run
       # - /etc/postman/smoke.postman_collection.json
@@ -30,7 +30,7 @@ services:
       - ./collection:/etc/postman
       - ./env:/etc/env
       - report:/etc/report
-    entrypoint: /bin/bash
+    entrypoint: /bin/sh
     command:
       # - run
       # - /etc/postman/smoke.postman_collection.json
