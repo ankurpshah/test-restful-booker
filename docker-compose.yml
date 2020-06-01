@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3'
 
 services:
   restful-booker:
@@ -37,3 +37,9 @@ services:
       - /etc/report/smoke.html
       - --reporter-htmlextra-title 
       - "Smoke Test"
+volumes:
+  collection:
+    read_only: true
+  env:
+    read_only: true
+  report:
