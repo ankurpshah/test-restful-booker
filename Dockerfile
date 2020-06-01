@@ -31,3 +31,4 @@ WORKDIR /etc/newman
 #                                                                        -e YourEnvironment.postman_environment \
 #                                                                        -H newman_report.html
 ENTRYPOINT ["newman"]
+CMD ["--help"]
