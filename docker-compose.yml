@@ -14,12 +14,13 @@ services:
       - ./env:/etc/env
       - report:/etc/report
     command:
-      - run
-      - /etc/postman/smoke.postman_collection.json
-      - --environment=/etc/env/docker.postman_environment.json
-      - --reporters
-      - junit
-      - --reporter-junit-export=/etc/report/Smoke-report.xml
+      # - run
+      # - /etc/postman/smoke.postman_collection.json
+      # - --environment=/etc/env/docker.postman_environment.json
+      # - --reporters
+      # - junit
+      # - --reporter-junit-export=/etc/report/Smoke-report.xml
+      - "--help"
       - "&&"
       - sleep
       - "100"
@@ -31,14 +32,18 @@ services:
       - ./env:/etc/env
       - report:/etc/report
     command:
-      - run
-      - /etc/postman/smoke.postman_collection.json
-      - --environment=/etc/env/docker.postman_environment.json
-      - --reporters
-      - htmlextra
-      - --reporter-htmlextra-export 
-      - /etc/report/smoke.html
-      - --reporter-htmlextra-title 
-      - "Smoke Test"
+      # - run
+      # - /etc/postman/smoke.postman_collection.json
+      # - --environment=/etc/env/docker.postman_environment.json
+      # - --reporters
+      # - htmlextra
+      # - --reporter-htmlextra-export 
+      # - /etc/report/smoke.html
+      # - --reporter-htmlextra-title 
+      # - "Smoke Test"
+      - "--help"
+      - "&&"
+      - sleep
+      - "100"
 volumes:
   report:
