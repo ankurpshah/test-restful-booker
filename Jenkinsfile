@@ -16,12 +16,18 @@ pipeline {
         docker 'postman/newman'
         args '-v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report'
       }
-      steps {
-        sh "run /etc/postman/smoke.postman_collection.json --environment=/etc/env/docker.postman_environment.json --reporters junit --reporter-junit-export=/etc/report/Smoke-report.xml"
+      
+      stages {
+        stage ('test') {
+          steps {
+            sh "run /etc/postman/smoke.postman_collection.json --environment=/etc/env/docker.postman_environment.json --reporters junit --reporter-junit-export=/etc/report/Smoke-report.xml"
+          }
+        }
       }
+      
       post {
         success {
-          sh "docker stop restful-booker"
+          sh "docker stop restful"
         }
       }
     }
