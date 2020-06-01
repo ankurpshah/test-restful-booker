@@ -1,8 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'jensbodal/dind-docker-compose-aws-terraform'
-      args '-t '
+      image 'qmarketing/dind-docker-compose'
     }
   }
   stages {
