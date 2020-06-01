@@ -10,7 +10,7 @@ pipeline {
       steps {
         sh '''
           docker-compose up -d
-          sleep 20
+          sleep 200
           docker-compose down
           pwd
           ls -al
