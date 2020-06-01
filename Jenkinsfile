@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'qmarketing/dind-docker-compose:18.09.5'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
+      args '-v /var/run/docker.sock:/var/run/docker.sock ${PWD}/report:/etc/report'
     }
   }
   stages {
@@ -12,6 +12,12 @@ pipeline {
         sh "sleep 20"
         sh "docker-compose down"
       }
+    }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'report/smoke.html', fingerprint: true
+      junit 'report/*.xml'
     }
   } 
 }
