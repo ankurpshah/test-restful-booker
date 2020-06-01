@@ -12,11 +12,11 @@ pipeline {
         sh "sleep 20"
         sh "docker-compose down"
       }
-      post {
-        success {
-          archiveArtifacts artifacts: 'report/smoke.html', fingerprint: true
-          junit 'report/*.xml'
-        }
+    }
+    post {
+      success {
+        archiveArtifacts artifacts: 'report/smoke.html', fingerprint: true
+        junit 'report/*.xml'
       }
     }
   }
