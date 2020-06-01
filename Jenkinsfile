@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'jonpraw/jenkins-dind-slave'
+      image 'jensbodal/dind-docker-compose-aws-terraform'
       args '-t '
     }
   }
