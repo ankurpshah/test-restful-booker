@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Smoke" tests="8" time="0.427">
+  <testsuite name="Auth / CreateToken" id="0cb18815-a468-4833-8bb5-6a3de08143ee" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.179">
+    <testcase name="Status code should be 200 OK" time="0.179" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Booking / GetBookingIds" id="51a5198f-d28d-47b1-8f30-7f80e564f33b" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.016">
+    <testcase name="Status code should be 200 OK" time="0.016" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Booking / GetBooking" id="02a75813-96d5-4e73-8d1a-abff381e5861" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.010">
+    <testcase name="Status code should be 200 OK" time="0.010" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Booking / CreateBooking" id="f69ef992-f809-45e4-b26a-743b1280827a" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="Status code should be 200 Created" time="0.013" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Booking / UpdateBooking" id="74db8f55-d69f-45b4-8624-b10524ac8845" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.014">
+    <testcase name="Status code should be 200 OK" time="0.014" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Booking / PartialUpdateBooking" id="6e984408-baf2-4da5-be58-b3e392bc9d75" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="Status code should be 200 OK" time="0.013" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Booking / DeleteBooking" id="8e96d66b-1de7-4af9-8d9c-2448aa49b5a8" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.018">
+    <testcase name="Status code should be 201 OK" time="0.018" classname="Smoke"/>
+  </testsuite>
+  <testsuite name="Health Check / Ping" id="0c4bba40-e2c8-44eb-b6ab-d65650e50733" timestamp="2020-06-01T04:03:49.524Z" tests="1" failures="0" errors="0" time="0.009">
+    <testcase name="Status code should be 201 OK" time="0.009" classname="Smoke"/>
+  </testsuite>
+</testsuites>

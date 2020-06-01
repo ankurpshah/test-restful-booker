@@ -3,43 +3,23 @@ version: '3.6'
 services:
   restful-booker:
     image: ankurpshah/restful-booker
-    # build: ./
     ports:
       - "3001:3001"
-  test-restful-booker:
-    image: postman/newman
-    tty: true
-    volumes:
-      - ./collection:/etc/postman
-      - ./env:/etc/env
-      - report:/etc/report
-    entrypoint: /bin/sleep
-    command:
-      # - run
-      # - /etc/postman/smoke.postman_collection.json
-      # - --environment=/etc/env/docker.postman_environment.json
-      # - --reporters
-      # - junit
-      # - --reporter-junit-export=/etc/report/Smoke-report.xml
-      - "150"
   test-restful-booker-extra:
     image: ankurpshah/newman-with-htmlextra
     tty: true
     volumes:
-      - ./collection:/etc/postman
-      - ./env:/etc/env
-      - report:/etc/report
-    entrypoint: /bin/sleep
+      - ${PWD}/collection:/etc/postman
+      - ${PWD}/env:/etc/env
+      - ${PWD}/report:/etc/report
     command:
-      # - run
-      # - /etc/postman/smoke.postman_collection.json
-      # - --environment=/etc/env/docker.postman_environment.json
-      # - --reporters
-      # - htmlextra
-      # - --reporter-htmlextra-export 
-      # - /etc/report/smoke.html
-      # - --reporter-htmlextra-title 
-      # - "Smoke Test"
-      - "150"
-volumes:
-  report:
+      - run
+      - /etc/postman/smoke.postman_collection.json
+      - --environment=/etc/env/docker.postman_environment.json
+      - --reporters
+      - htmlextra,junit
+      - --reporter-htmlextra-export 
+      - /etc/report/smoke.html
+      - --reporter-htmlextra-title 
+      - "Smoke Test"
+      - --reporter-junit-export=/etc/report/Smoke-report.xml
