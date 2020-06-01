@@ -23,4 +23,5 @@ services:
       - /etc/report/html/smoke.html
       - --reporter-htmlextra-title 
       - "Smoke Test"
-      - --reporter-junit-export=/etc/report/junit/smoke-report.xml
+      - --reporter-junit-export
+      - /etc/report/junit/smoke-report.xml
