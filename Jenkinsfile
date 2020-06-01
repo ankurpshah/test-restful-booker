@@ -13,7 +13,7 @@ pipeline {
     }
   }
   post {
-    success {
+    always {
       archiveArtifacts artifacts: 'report/smoke.html', fingerprint: true
       junit 'report/*.xml'
     }
