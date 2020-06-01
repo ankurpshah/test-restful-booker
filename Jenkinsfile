@@ -6,6 +6,7 @@ pipeline {
       agent {
         docker 'ankurpshah/restful-booker'
         args '-p 3001:3001 --name=restful-booker'
+        label 'restful-booker'
       }
       steps {
         sh "echo 'Server Started'"
@@ -15,8 +16,9 @@ pipeline {
       agent {
         docker 'postman/newman'
         args '-v ${PWD}/collection:/etc/postman -v ${PWD}/env:/etc/env -v ${PWD}/report:/etc/report'
+        label 'newman'
       }
-      
+
       stages {
         stage ('test') {
           steps {
