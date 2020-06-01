@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'qmarketing/dind-docker-compose:18.09.5'
-      args '-t -i -privileged -v /var/run/docker.sock:/var/run/docker.sock -v report:/etc/report'
+      args '-t -i --privileged -v /var/run/docker.sock:/var/run/docker.sock -v report:/etc/report'
     }
   }
   stages {
