@@ -17,6 +17,6 @@ jobs: # a collection of steps
             docker-compose down
 
       - store_test_results:
-          path: ~/report/junit
+          path: report
       - store_artifacts:
-          path: ~/report/html
+          path: report/html
